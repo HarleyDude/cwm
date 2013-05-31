@@ -1,0 +1,31 @@
+As of 05/29/2013--------
+
+Compiling off of Cyanogenmod 10.1 using included ~/bootable/recovery/ folder and the ~/device/**MANUFACTURER**/**CODENAME**/ provided in this repo.
+
+Current version of Android: 4.2.2
+Current version of Cyanogenmod: 10.1
+Current version of CWM: 6.0.3.2
+
+-----------------------------------------------------------------
+cd ~/**WORKING_DIRECTORY**/
+make clean
+make clobber
+-----------------------------------------------------------------
+Delete the folder ~/**WORKING_DIRECTORY**/bootable/recovery.
+Copy in /recovery/ from this repo into ~/**WORKING_DIRECTORY**/bootable/recovery/
+Copy in /**MANUFACTURER**/**CODENAME**/ from this repo into ~/**WORKING_DIRECTORY**/device/
+Note: If for some reason your device is already in this folder, delete the old one and do the step above. Do NOT overwrite.
+-----------------------------------------------------------------
+chmod -R 755 ~/**WORKING_DIRECTORY**/bootable/recovery/
+chmod -R 755 ~/**WORKING_DIRECTORY**/device/**MANUFACTURER**/**CODENAME**/
+. build/envsetup.sh
+lunch
+-----------------------------------------------------------------
+Scroll through the list to find your device. Type the number only. EX: '9' without the '' then hit enter.
+-----------------------------------------------------------------
+make recoveryimage
+
+You will then find the created recovery.img in:
+
+~/**WORKING_DIRECTORY**/out/target/product/**CODENAME**/recovery.img
+
